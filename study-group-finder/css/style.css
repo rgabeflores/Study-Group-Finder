@@ -1,0 +1,90 @@
+html,body, .container, .row{
+	height: 100%;
+	background-color: #F1F1F1;
+}
+.nav .nav-item{
+	color: #F1F1F1;
+}
+.wrapper{
+	background-color: #FFFFFF;
+	position:absolute;
+	height: 75%;
+	padding: 5%;
+	margin:auto;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+   	box-shadow: 0px 0px 75px #888888;
+}
+.title-header{
+
+}
+.index-wrapper{
+	vertical-align: middle;
+
+}
+.index-wrapper div{
+	display: inline-block;
+}
+.index-content{
+	padding: 20px;
+   	box-shadow: 0px 0px 10px #888888;
+}
+
+.side-wrapper{
+	border: 3px solid #888888;
+}
+.side-wrapper h3{
+	padding-top: 12px;
+}
+.side-wrapper ul li {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.app-wrapper{
+	border: 3px solid #888888;
+}
+.app-wrapper div h1{
+	padding-top: 16px;
+}
+.app-wrapper div h3{
+	padding-bottom: 16px;
+}
+select {
+	height: auto;
+	width: auto;
+	margin: 12px;
+	padding: 12px;
+	font-size: 1.15rem;
+	font-weight: bold;
+	border: 3px solid #888888;
+	box-shadow: 0px 0px 10px #888888;
+}
+#classes{
+	background-color: #FFFFFF;
+	padding-bottom: 16px;
+}
+.app-wrapper form div{
+	display: inline-block;
+}
+.form-inline div label{
+	padding-left: 8px;
+	padding-right: 8px;
+}
+.form-inline .form-group{
+	padding: 12px;
+}
+.app-body ul{
+	position: relative;
+	display: inline;
+	width: 100%;
+}
+.app-body ul li{
+	position: relative;
+	display: inline-block;
+	width: auto;
+}
+#logout{
+	width: 100%;
+}
