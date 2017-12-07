@@ -1,7 +1,7 @@
 # Study Group Finder
 ## Rough Prototype for Project Demo
 
- Currently under dev and refinement
+ #### Under dev and refinement
 
 * HTML, CSS
 
