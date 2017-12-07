@@ -3,4 +3,6 @@
 
  Currently under dev and refinement
 
-HTML, CSS, PHP, MySQL
+* HTML, CSS
+
+ * PHP, MySQL
