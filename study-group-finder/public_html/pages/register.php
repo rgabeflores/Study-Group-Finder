@@ -70,5 +70,5 @@
 		</div>
 		';
 
-	include 'base.php';
+	require_once(TEMPLATES_PATH . "/base.php");
 ?>
