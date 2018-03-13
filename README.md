@@ -1,5 +1,5 @@
 # Study Group Finder
-## Rough Prototype for Project Demo
+## Rough Prototype for Project Demo/Proof of Concept
 
  #### *Under development*
 
