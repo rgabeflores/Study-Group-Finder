@@ -5,9 +5,9 @@
 	session_start();
 
 	if(isset($_POST['login-submit'])){
-		require 'connect.php';
-		$email = $_POST['login-email'];
-		$password = $_POST['login-password'];
+		require 'include/connect.php';
+		$email = mysqli_real_escape_string($conn, $_POST['login-email']);
+		$password = mysqli_real_escape_string($conn, $_POST['login-password']);
 		$sql = 'SELECT * FROM user WHERE email="' . $email . '" and password="' . $password . '"';
 		$result = mysqli_query($conn, $sql);
 		if(mysqli_num_rows($result) == 1){
@@ -21,10 +21,10 @@
 		}
 	}
 	if(isset($_POST['register-submit'])){
-		require 'connect.php';
-		$name = $_POST['register-name'];
-		$email = $_POST['register-email'];
-		$password = $_POST['register-password'];
+		require 'include/connect.php';
+		$name = mysqli_real_escape_string($conn, $_POST['register-name']);
+		$email = mysqli_real_escape_string($conn, $_POST['register-email']);
+		$password = mysqli_real_escape_string($conn, $_POST['register-password']);
 		$sql = 'SELECT * FROM user WHERE email="' . $email . '"';
 		$result = mysqli_query($conn, $sql);
 		if(mysqli_num_rows($result) == 1){

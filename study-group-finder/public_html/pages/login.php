@@ -1,10 +1,10 @@
 <?php
-	
+
 	$title = 'Welcome';
 
 	session_start();
 
-	require 'connect.php';
+	require 'include/connect.php';
 	$sql = 'SELECT name FROM user WHERE email="' . $_SESSION["email"] . '"';
 	$result = mysqli_query($conn, $sql);
 	$row = $result->fetch_assoc();
@@ -23,7 +23,7 @@
 			  </li>
 			</ul>
 		</div>
-		<div class="col-sm-10 app-wrapper"> 
+		<div class="col-sm-10 app-wrapper">
 			<div class="col-sm-12 app-header-wrapper">
 				<h1 class="title-header">Welcome, ' . $row['name'] . '.</h1>
 				<hr/>

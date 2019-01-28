@@ -1,15 +1,15 @@
 <?php
-	
+
 	$title = 'Get Started';
 
 	session_start();
 
-	require 'connect.php';
+	require 'include/connect.php';
 
 	if(isset($_POST["freetime-submit"])){
 		require 'connect.php';
 
-		$sql = 'UPDATE user SET freeday="' . $_POST["free-day"] . '", startHour="' . $_POST["start-hour"] . '", endHour="' . $_POST["end-hour"] . '" WHERE email="' . $_SESSION["email"] . '"';
+		$sql = 'UPDATE user SET freeday="' . mysqli_real_escape_string($conn, $_POST["free-day"]) . '", startHour="' . mysqli_real_escape_string($conn, $_POST["start-hour"]) . '", endHour="' . mysqli_real_escape_string($conn, $_POST["end-hour"]) . '" WHERE email="' . $_SESSION["email"] . '"';
 		if(mysqli_query($conn, $sql)){
 			header('Location: profile.php');
 		}

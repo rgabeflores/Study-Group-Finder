@@ -1,11 +1,13 @@
 <?php
-	
+
 	$title = 'Welcome';
+
+	// Hardcoded for demo/testing
 	$classes = array('CECS 229','CECS 277','CECS 282','CECS 323','CECS 326','CECS 328','CECS 341','CECS 343','CECS 378');
 
 	session_start();
 
-	require 'connect.php';
+	require 'include/connect.php';
 	$sql = 'SELECT ID,name,class1,class2,class3,class4,freeday,startHour,endHour FROM user WHERE ID="' . $_SESSION["ID"] . '" OR email="' . $_SESSION["email"] . '"';
 	$result = mysqli_query($conn, $sql);
 	$row = $result->fetch_assoc();
@@ -36,7 +38,7 @@
 			$str .= '
 			<select class="class-menu" name="class' . ($i + 1) . '">
 				<option value="0" selected="selected">Select Class ' . ($i + 1) . '</option>
-                ' . 
+                ' .
                 get_classes($arr)
                  . '
             </select>
@@ -51,18 +53,18 @@
 	if(isset($_POST["save-edit"])){
 		$sql = 'UPDATE user SET ';
 		if(!empty($_POST["new-name"])){
-			$sql .= 'name="' . $_POST["new-name"] . '",';
+			$sql .= 'name="' . mysqli_real_escape_string($conn, $_POST["new-name"]) . '",';
 		}
 		if(!empty($_POST["new-email"])){
-			$sql .= 'email="' . $_POST["new-email"] . '",';
+			$sql .= 'email="' . mysqli_real_escape_string($conn, $_POST["new-email"]) . '",';
 		}
 		if(isset($_POST["new-pass"])){
-			$sql .= 'password="' . $_POST["new-pass"] . '",';
+			$sql .= 'password="' . mysqli_real_escape_string($conn, $_POST["new-pass"]) . '",';
 		}
 		for($i = 0; $i < 4; $i++){
 			$ref = ('class' . ($i + 1));
 			if(!empty($_POST[$ref])){
-				$sql .= $ref .'="' . $_POST[$ref] . '",'; 
+				$sql .= $ref .'="' . mysqli_real_escape_string($conn, $_POST[$ref]) . '",';
 			}
 		}
 		$sql = substr($sql, 0, strlen($sql) - 1);
@@ -77,14 +79,14 @@
 		}
 	}
 	if(isset($_POST["class-search"])){
-		$input = $_POST["search-class"];
+		$input = mysqli_real_escape_string($conn, $_POST["search-class"]);
 		$sql = 'SELECT ID, name, email,freeday,startHour,endHour FROM user WHERE (class1="' . $input . '" OR class2="' . $input . '" OR class3="' . $input . '" OR class4="' . $input . '") AND (NOT ID="' . $ID . '")';
 		$query = mysqli_query($conn, $sql);
 		if($query){
 			$students = "";
 			while($results = mysqli_fetch_assoc($query)){
 				if($results["freeday"] == $freeday and (
-					(($startHour <= $results["startHour"]) and ($endHour > $results["startHour"])) || 
+					(($startHour <= $results["startHour"]) and ($endHour > $results["startHour"])) ||
 					(($results["startHour"] <= $startHour) and ($results["endHour"] > $endHour)))) {
 					$students .= '<li class="list-group-item col-sm-4"><h4>' . $results["name"] . '</h4><p>' . $results["email"] . '</p></li>';
 				}
@@ -149,7 +151,7 @@
 		</div>
 		<div class="col-sm-10 app-wrapper">
 	';
-	
+
 
 	$content .= $app_body . '
 		<div class="modal" tabindex="-1" id="edit-profile" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -1,10 +1,10 @@
 <?php
-	
+
 	$title = 'Get Started';
 
 	session_start();
 
-	require 'connect.php';
+	require 'include/connect.php';
 	$sql = 'SELECT name FROM user WHERE email="' . $_SESSION["email"] . '"';
 	$result = mysqli_query($conn, $sql);
 	$row = $result->fetch_assoc();
@@ -25,7 +25,7 @@
 			$str .= '
 			<select class="class-menu" name="class' . ($i + 1) . '">
             	<option value="0" selected="selected">Select Class ' . ($i + 1) . '</option>
-                ' . 
+                ' .
                 get_classes($arr)
                  . '
             </select>
@@ -35,11 +35,11 @@
 	}
 
 	if(isset($_POST["classes-submit"])){
-		require 'connect.php';
-		
+		require 'include/connect.php';
+
 		for($i = 0; $i < 4; $i++){
 			$class = "class" . ($i+1);
-			$sql = 'UPDATE user SET ' . $class . '="' . $_POST[$class] . '" WHERE email="' . $_SESSION["email"] . '"';
+			$sql = 'UPDATE user SET ' . $class . '="' . mysqli_real_escape_string($conn, $_POST[$class]) . '" WHERE email="' . $_SESSION["email"] . '"';
 			if(mysqli_query($conn, $sql)){
 				header('Location: register2.php');
 			}
@@ -51,7 +51,7 @@
 	}
 
 	$content = '
-		<div class="col-sm-12 app-wrapper"> 
+		<div class="col-sm-12 app-wrapper">
 			<div class="col-sm-12 app-header-wrapper">
 				<h1 class="title-header">Welcome, ' . $row['name'] . '.</h1>
 				<hr/>
