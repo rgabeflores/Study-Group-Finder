@@ -5,3 +5,7 @@
  * PHP
  * MySQL
  * Apache
+
+## Contributors
+
+* [Gabriel Flores](https://www.linkedin.com/in/rgabrielflores/)
